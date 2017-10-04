@@ -14,11 +14,13 @@
 <body>
   <canvas id="myCanvas" width="550px" height="350px"></canvas> 
   <script>
+//This example got from here: http://www.internet-technologies.ru/articles/article_2887.html
     var canvas = document.querySelector("#myCanvas");
     var context = canvas.getContext("2d");
+
     function update() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
       context.beginPath();
-//      context.arc(100, 100, 50, 0, 2 * Math.PI, true);
     context.arc(mouseX, mouseY, 50, 0, 2 * Math.PI, true);
       context.fillStyle = "#FF6A6A";
       context.fill();
