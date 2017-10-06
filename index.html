@@ -4,18 +4,24 @@
   <title>Canvas Follow Mouse</title>
   <style>
     canvas {
-      border: #333 10px solid;
-    } 
-    body {
-      padding: 50px;
+      display: block;
+    }
+    html, body {
+        height: 100%;
+        width: 100%;
+      margin: 0;
+      padding: 0;
     }
   </style>
 </head> 
 <body>
-  <canvas id="myCanvas" width="550px" height="350px"></canvas> 
+<!-- <canvas id="myCanvas" width="850px" height="550px"></canvas> -->
+ <canvas id="myCanvas"></canvas>
   <script>
 //This example got from here: http://www.internet-technologies.ru/articles/article_2887.html
     var canvas = document.querySelector("#myCanvas");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
     var context = canvas.getContext("2d");
 
     function update() {
