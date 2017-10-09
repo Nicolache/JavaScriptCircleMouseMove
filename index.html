@@ -22,6 +22,7 @@
     var canvas = document.querySelector("#myCanvas");
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+//How to make a full windowed canvas: https://h3manth.com/content/html5-canvas-full-screen-and-full-page
     var context = canvas.getContext("2d");
 
     function update() {
@@ -45,20 +46,7 @@
     }
     update();
 
-    function getPosition(el) {
-      var xPosition = 0;
-      var yPosition = 0;
-    
-      while (el) {
-        xPosition += (el.offsetLeft - el.scrollLeft + el.clientLeft);
-        yPosition += (el.offsetTop - el.scrollTop + el.clientTop);
-        el = el.offsetParent;
-      }
-      return {
-        x: xPosition,
-        y: yPosition
-      };
-    }
   </script> 
+
 </body> 
 </html>
