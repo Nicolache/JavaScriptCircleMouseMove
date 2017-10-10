@@ -35,10 +35,16 @@ document.addEventListener('mousemove', move, false);
 document.addEventListener('mousedown', setDraggable, false);
 document.addEventListener('mouseup', setDraggable, false);
 
+function randomColor() {
+    var color = Math.floor(Math.random() * 16777216).toString(16);
+    return '#000000'.slice(0, -color.length) + color;
+}
+
 //make some circles
-var c1 = new Circle(50, 50, 50, "red", "black");
-var c2 = new Circle(200, 50, 50, "green", "black");
-var c3 = new Circle(350, 50, 50, "blue", "black");
+var c1 = new Circle(50, 50, 50, randomColor(), "black");
+var c2 = new Circle(200, 50, 50, randomColor(), "black");
+var c3 = new Circle(350, 50, 50, randomColor(), "black");
+//debugger;
 //make a collection of circles
 var circles = [c1, c2, c3];
 
@@ -77,7 +83,7 @@ function Circle(x, y, r, fill, stroke) {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.r, this.startingAngle, this.endAngle);
         ctx.fillStyle = this.fill;
-        ctx.lineWidth = 3;
+        ctx.lineWidth = 1;
         ctx.fill();
         ctx.strokeStyle = this.stroke;
         ctx.stroke();
