@@ -26,9 +26,9 @@ var mousePosition;
 var isMouseDown;
 
 //reference to the canvas element
-var c = document.getElementById("myCanvas");
+var canvasElement = document.getElementById("myCanvas");
 //reference to 2d context
-var ctx = c.getContext("2d");
+var ctx = canvasElement.getContext("2d");
 
 //add listeners
 document.addEventListener('mousemove', move, false);
@@ -37,7 +37,8 @@ document.addEventListener('mouseup', setDraggable, false);
 
 function randomColor() {
     var color = Math.floor(Math.random() * 16777216).toString(16);
-    return '#000000'.slice(0, -color.length) + color;
+//    return '#000000'.slice(0, -color.length) + color;
+    return '#' + color;
 }
 
 //make some circles
@@ -51,7 +52,7 @@ var circles = [c1, c2, c3];
 //main draw method
 function draw() {
     //clear canvas
-    ctx.clearRect(0, 0, c.width, c.height);
+    ctx.clearRect(0, 0, canvasElement.width, canvasElement.height);
     drawCircles();
 }
 
@@ -120,16 +121,12 @@ function setDraggable(e) {
         isMouseDown = true;
     } else if (t === "mouseup") {
         isMouseDown = false;
-        releaseFocus();
+        focused.state = false;
     }
 }
 
-function releaseFocus() {
-    focused.state = false;
-}
-
 function getMousePosition(e) {
-    var rect = c.getBoundingClientRect();
+    var rect = canvasElement.getBoundingClientRect();// element's size and position relative to window.
     mousePosition = {
         x: Math.round(e.x - rect.left),
         y: Math.round(e.y - rect.top)
